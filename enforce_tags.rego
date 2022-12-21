@@ -61,6 +61,6 @@ deny[reason] {
 
     reason := sprintf(
         "%s: missing required tag %q",
-        [resource.address, tags["Environment"].value]
+        [resource.address, required_tag]
     )
 }

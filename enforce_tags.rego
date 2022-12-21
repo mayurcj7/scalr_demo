@@ -49,7 +49,7 @@ deny[reason] {
     not array_contains(existing_tags, required_tag)
     
     #sprintf("%s: missing required tag %q", [tags["Environment"].value])
-    not array_contains(allowed_Environment_values, tags["Environment"].value)
+    #not array_contains(allowed_Environment_values, tags["Environment"].value)
     #sprintf("%s: missing required tag %q", [result])
     #allowed_Environment_values[tags["Environment"].value]
     #if {

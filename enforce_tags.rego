@@ -6,11 +6,11 @@ import input.tfplan as tfplan
 
 required_tags = ["Environment", "ApplicationEnv"]
 
-allowed_Environment_values = ["app-prod", "app-non-prod"]
+allowed_Environment_values := ["app-prod", "app-non-prod"]
 
-allowed_ApplicationEnv_nonprod_values = ["dev", "sit", "uat"]
+allowed_ApplicationEnv_nonprod_values := ["dev", "sit", "uat"]
 
-allowed_ApplicationEnv_prod_values = ["prod"]
+allowed_ApplicationEnv_prod_values := ["prod"]
 
 array_contains(arr, elem) {
   arr[_] = elem

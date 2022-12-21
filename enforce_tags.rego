@@ -4,7 +4,6 @@ package terraform
 
 import input.tfplan as tfplan
 
-
 required_tags = ["Environment", "ApplicationEnv"]
 
 allowed_Environment_values = ["app-prod", "app-non-prod"]
@@ -48,7 +47,7 @@ deny[reason] {
     required_tag := required_tags[_]
     not array_contains(existing_tags, required_tag) 
     
-    #not array_contains(allowed_Environment_values, tags["Environment"].value)
+    not array_contains(allowed_Environment_values, tags["Environment"].value)
     #sprintf("%s: missing required tag %q", [result])
     #allowed_Environment_values[tags["Environment"].value]
     #if {

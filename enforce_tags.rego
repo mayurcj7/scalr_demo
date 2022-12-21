@@ -62,6 +62,7 @@ deny[reason] {
       allowed_ApplicationEnv_prod_values[tags["ApplicationEnv"].value]
     } else {
         allowed_ApplicationEnv_nonprod_values[tags["ApplicationEnv"].value]
+    }
 
     reason := sprintf(
         "%s: missing required tag %q",

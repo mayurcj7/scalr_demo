@@ -48,7 +48,9 @@ deny[reason] {
     required_tag := required_tags[_]
     not array_contains(existing_tags, required_tag)
     
-    not array_contains(allowed_Environment_values, tags["Environment"].value)
+    sprintf("%s: missing required tag %q", [tags["Environment"].value])
+    result := not array_contains(allowed_Environment_values, tags["Environment"].value)
+    sprintf("%s: missing required tag %q", [result])
     #allowed_Environment_values[tags["Environment"].value]
     #if {
     #  Environment == app-prod

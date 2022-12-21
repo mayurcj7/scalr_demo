@@ -56,7 +56,7 @@ deny[reason] {
     existing_tags := [ key | tags[key] ]
     required_tag := required_tags[_]
     not array_contains(existing_tags, required_tag)
-    not allowed_Environment_values[tags["Environment"].value]
+    #not allowed_Environment_values[tags["Environment"].value]
     #if {
     #  Environment == app-prod
     #  allowed_ApplicationEnv_prod_values[tags["ApplicationEnv"].value]

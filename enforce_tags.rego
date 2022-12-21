@@ -7,20 +7,11 @@ import input.tfplan as tfplan
 
 required_tags = ["Environment", "ApplicationEnv"]
 
-allowed_Environment_values = {
-  "app-prod",
-  "app-non-prod"
-}
+allowed_Environment_values = ["app-prod", "app-non-prod"]
 
-allowed_ApplicationEnv_nonprod_values = {
-  "dev",
-  "sit",
-  "uat"
-}
+allowed_ApplicationEnv_nonprod_values = ["dev", "sit", "uat"]
 
-allowed_ApplicationEnv_prod_values = {
-  "prod"
-}
+allowed_ApplicationEnv_prod_values = ["prod"]
 
 array_contains(arr, elem) {
   arr[_] = elem
@@ -57,6 +48,7 @@ deny[reason] {
     required_tag := required_tags[_]
     not array_contains(existing_tags, required_tag)
     
+    not array_contains(allowed_Environment_values, tags["Environment"].value)
     #allowed_Environment_values[tags["Environment"].value]
     #if {
     #  Environment == app-prod

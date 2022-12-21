@@ -5,3 +5,8 @@ policy "enforce_aws_resource" {
   #enforcement_level = "hard-mandatory"
   enforcement_level = "advisory"
 }
+
+policy "enforce_tags" {
+  enabled           = true
+  enforcement_level = "hard-mandatory"
+}

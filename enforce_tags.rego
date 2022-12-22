@@ -10,18 +10,19 @@ allowed_Environment_values = {
 
 #entry point for tags enforcement 
 resource := tfplan.resource_changes[_]
-checkTags(resource) {
+#checkTags(resource) {
  # read the tags based on the resource type
- tags = readTags(resource.type, resource)
+ #tags = readTags(resource.type, resource)
  # check for the tag enforcement
  #ensureMandatoryTags(tags)
-}
+#}
 # every resource to be evaluated will have a 'readTags' function for # itself the returned document should resemble the below structure
 # {'tag-name': {value: 'tag-value'}}
 readTags("aws_instance", resource) = tags {
  tags = resource.changedAttributes.tags
 }
 deny[reason] {
+ tags = readTags(resource.type, resource)
  allowed_Environment_values[tags["Environment"].value]
  
  reason := sprintf(

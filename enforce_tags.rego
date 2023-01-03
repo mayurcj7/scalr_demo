@@ -31,13 +31,13 @@ readTags("aws_instance", resource) = tags {
 # )
 #}
 deny[reason] {
- #tags = readTags(resource.type, resource)
+ tags = readTags(resource.type, resource)
  #allowed_Environment_values[tags["Environment"].value]
  resource.change.after.cpu_core_count * resource.change.after.cpu_threads_per_core < 8 
  
  reason := sprintf(
         "%s: wrong core count %q",
-        [resource.address, "aaa"]
+        [resource.address, tags["Environment"].value]
  )
 }
 #check if all the mandatory tags are available & have allowed values

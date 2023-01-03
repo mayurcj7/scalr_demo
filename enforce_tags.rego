@@ -30,6 +30,16 @@ deny[reason] {
         [resource.address, tags["Environment"].value]
  )
 }
+deny[reason] {
+ #tags = readTags(resource.type, resource)
+ #allowed_Environment_values[tags["Environment"].value]
+ resource.changedAttributes.cpu_core_count * resource.changedAttributes.cpu_threads_per_core <= 8 
+ 
+ reason := sprintf(
+        "%s: missing required tag %q",
+        [resource.address, tags["Environment"].value]
+ )
+}
 #check if all the mandatory tags are available & have allowed values
 #ensureMandatoryTags(tags) {
 # allowed_Environment_values[tags["Environment"].value]

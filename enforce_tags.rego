@@ -21,22 +21,22 @@ resource := tfplan.resource_changes[_]
 readTags("aws_instance", resource) = tags {
  tags = resource.changedAttributes.tags
 }
-deny[reason] {
- tags = readTags(resource.type, resource)
- allowed_Environment_values[tags["Environment"].value]
+#deny[reason] {
+# tags = readTags(resource.type, resource)
+# allowed_Environment_values[tags["Environment"].value]
  
- reason := sprintf(
-        "%s: missing required tag %q",
-        [resource.address, tags["Environment"].value]
- )
-}
+# reason := sprintf(
+#        "%s: missing required tag %q",
+#        [resource.address, tags["Environment"].value]
+# )
+#}
 deny[reason] {
  #tags = readTags(resource.type, resource)
  #allowed_Environment_values[tags["Environment"].value]
  resource.change.after.cpu_core_count * resource.change.after.cpu_threads_per_core <= 8 
  
  reason := sprintf(
-        "%s: missing required tag %q",
+        "%s: wrong core count %q",
         [resource.address, "aaa"]
  )
 }

@@ -33,7 +33,7 @@ readTags("aws_instance", resource) = tags {
 deny[reason] {
  tags = readTags(resource.type, resource)
  #allowed_Environment_values[tags["Environment"].value]
- resource.change.after[aws_instance].cpu_core_count * resource.change.after[aws_instance].cpu_threads_per_core < 8 
+ resource.change.after["aws_instance"].cpu_core_count * resource.change.after["aws_instance"].cpu_threads_per_core < 8 
  
  reason := sprintf(
         "%s: wrong core count %q",

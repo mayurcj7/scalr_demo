@@ -33,7 +33,7 @@ deny[reason] {
 deny[reason] {
  #tags = readTags(resource.type, resource)
  #allowed_Environment_values[tags["Environment"].value]
- resource.changedAttributes.cpu_core_count * resource.changedAttributes.cpu_threads_per_core <= 8 
+ resource.change.after.cpu_core_count * resource.change.after.cpu_threads_per_core <= 8 
  
  reason := sprintf(
         "%s: missing required tag %q",
